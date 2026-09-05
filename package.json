@@ -1,0 +1,72 @@
+{
+  "name": "pebble-like-time",
+  "author": "MrReSc",
+  "description": "A high-contrast, battery-friendly Pebble Time 2 watchface with health and sun times.",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "keywords": [
+    "pebble-app",
+    "watchface",
+    "health"
+  ],
+  "private": true,
+  "dependencies": {},
+  "pebble": {
+    "displayName": "Pebble Like Time",
+    "uuid": "11f623c8-eabe-48b3-bbe1-67ec92db7d11",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": [
+      "emery"
+    ],
+    "watchapp": {
+      "watchface": true
+    },
+    "capabilities": [
+      "health",
+      "location"
+    ],
+    "messageKeys": [
+      "JS_READY",
+      "REQUEST_SUN",
+      "SUNRISE_MINUTES",
+      "SUNSET_MINUTES",
+      "SUN_DATE"
+    ],
+    "resources": {
+      "media": [
+        {
+          "type": "bitmap",
+          "name": "IMAGE_MENU_ICON",
+          "file": "images/menu_icon.png",
+          "menuIcon": true
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_HEART",
+          "file": "images/heart.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_STEPS",
+          "file": "images/steps.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_SUNRISE",
+          "file": "images/sunrise.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_SUNSET",
+          "file": "images/sunset.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_CALENDAR",
+          "file": "images/calendar.png"
+        }
+      ]
+    }
+  }
+}
