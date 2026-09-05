@@ -1,10 +1,12 @@
 # Pebble Like Time
 
 A watchface for Pebble Time 2 (Emery, 200 × 228) with a white clock area,
-very light gray status panels and dotted separators.
+Workout-yellow status panels and dotted separators.
+
+This watchface was developed with the assistance of coding AI.
 
 - Automatic 12/24-hour time and locale-aware date.
-- Battery percentage beside a fixed empty battery outline.
+- Battery percentage beside a battery icon that fills with the charge level.
 - Pebble Health steps and heart rate when available.
 - Sunrise and sunset calculated locally on the paired phone with SunCalc 1.9.0.
 - Unavailable status rows disappear; the clock recenters automatically.

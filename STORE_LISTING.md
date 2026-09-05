@@ -10,10 +10,11 @@ A crisp clock with battery, date, Health stats and locally calculated sun times.
 
 ## Description
 
-Pebble Like Time combines a large clock with very light gray status panels and
+Pebble Like Time combines a large clock with Workout-yellow status panels and
 fine dotted separators. It follows your watch's 12/24-hour and date settings.
 
-See battery percentage, daily steps, heart rate, sunrise and sunset at a glance.
+See battery percentage and its visual fill level, daily steps, heart rate,
+sunrise and sunset at a glance.
 Unavailable status rows disappear and the clock recenters automatically.
 The clock updates once per minute. No settings, accounts, ads or analytics.
 
@@ -25,6 +26,7 @@ and may retain an earlier location until the next day. Polar day/night hides
 sun times. The clock works without location access.
 
 Independent watchface; not an official Pebble or Core Devices app.
+Developed with the assistance of coding AI.
 
 ## Release notes — 1.0.0
 

@@ -65,6 +65,7 @@ static int32_t s_sunrise_minutes = -1;
 static int32_t s_sunset_minutes = -1;
 static int32_t s_current_date;
 static time_t s_last_sun_request_time;
+static uint8_t s_battery_percent;
 
 static bool s_steps_available;
 static bool s_heart_available;
@@ -73,8 +74,9 @@ static bool s_health_subscribed;
 static bool s_outbox_busy;
 
 static void prv_update_battery_state(BatteryChargeState state) {
+  s_battery_percent = state.charge_percent > 100 ? 100 : state.charge_percent;
   snprintf(s_battery_buffer, sizeof(s_battery_buffer), "%u%%",
-           (unsigned int)state.charge_percent);
+           (unsigned int)s_battery_percent);
 }
 
 static int32_t prv_date_code(const struct tm *local_time) {
@@ -288,8 +290,20 @@ static void prv_draw_battery_icon(GContext *ctx, GRect bounds) {
   graphics_fill_rect(ctx, body, 0, GCornerNone);
   graphics_fill_rect(ctx, terminal, 0, GCornerNone);
 
-  graphics_context_set_fill_color(ctx, GColorWhite);
+  graphics_context_set_fill_color(ctx, GColorYellow);
   graphics_fill_rect(ctx, interior, 0, GCornerNone);
+
+  int fill_height = (interior.size.h * s_battery_percent + 99) / 100;
+  if (s_battery_percent < 100 && fill_height == interior.size.h) {
+    fill_height--;
+  }
+  if (fill_height > 0) {
+    const GRect fill = GRect(interior.origin.x,
+                             interior.origin.y + interior.size.h - fill_height,
+                             interior.size.w, fill_height);
+    graphics_context_set_fill_color(ctx, GColorBlack);
+    graphics_fill_rect(ctx, fill, 0, GCornerNone);
+  }
 }
 
 static void prv_draw_header(GContext *ctx, int width) {
@@ -352,25 +366,15 @@ static void prv_draw_horizontal_dotted_line(GContext *ctx, int y, int width) {
 }
 
 static void prv_draw_status_background(GContext *ctx, GRect bounds) {
-  // Emery has no solid neutral gray between #AAAAAA and white. One gray
-  // pixel per 2x2 white pixels gives a very light, neutral appearance.
-  graphics_context_set_stroke_color(ctx, GColorLightGray);
-  graphics_context_set_stroke_width(ctx, 1);
-  for (int y = bounds.origin.y; y < bounds.origin.y + bounds.size.h; ++y) {
-    if (y % 2 != 0) {
-      continue;
-    }
-    for (int x = bounds.origin.x; x < bounds.origin.x + bounds.size.w; x += 2) {
-      graphics_draw_pixel(ctx, GPoint(x, y));
-    }
-  }
+  graphics_context_set_fill_color(ctx, GColorYellow);
+  graphics_fill_rect(ctx, bounds, 0, GCornerNone);
 }
 
 static void prv_draw_time(GContext *ctx, int width, int time_y) {
   graphics_context_set_text_color(ctx, GColorBlack);
 
   const int glyph_count = strlen(s_time_buffer);
-  const int target_width = glyph_count == 5 ? width - 16 : width - 36;
+  const int target_width = glyph_count == 5 ? width - 8 : width - 24;
   int glyph_widths[5] = {0};
   int glyphs_width = 0;
   char glyph[2] = {'\0', '\0'};
@@ -595,7 +599,7 @@ static void prv_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   const GRect bounds = layer_get_bounds(window_layer);
 
-  s_time_font = fonts_get_system_font(FONT_KEY_LECO_60_NUMBERS_AM_PM);
+  s_time_font = fonts_get_system_font(FONT_KEY_LECO_60_BOLD_NUMBERS_AM_PM);
   s_ampm_font = fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD);
   s_info_font = fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD);
 
