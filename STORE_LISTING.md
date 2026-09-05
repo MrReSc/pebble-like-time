@@ -30,16 +30,20 @@ Developed with the assistance of coding AI.
 
 ## Release notes — 1.0.0
 
-Initial release for Pebble Time 2 with Health and local sun times, a dedicated
-selection icon, and status rows that hide when covered by Timeline Quick View.
+Initial release for Pebble Time 2 with a bold clock, charge-level battery,
+Health data, local sun times, Workout-yellow status panels, and Timeline Quick
+View support.
 
 ## Upload assets
 
 - `build/pebble-like-time.pbw`
 - `store-assets/icon_80x80.png`
 - `store-assets/icon_144x144.png`
-- `store-assets/screenshot_24h.png`
-- `store-assets/screenshot_12h.png`
+- `store-assets/emery_screenshot_24h.png`
+- `store-assets/emery_screenshot_12h.png`
 
-Set a public URL for `PRIVACY.md` and a working publisher support contact in
-the store entry before publishing.
+## Store URLs
+
+- Source: `https://github.com/MrReSc/pebble-like-time`
+- Privacy: `https://github.com/MrReSc/pebble-like-time/blob/main/PRIVACY.md`
+- Support: `https://github.com/MrReSc/pebble-like-time/issues`
