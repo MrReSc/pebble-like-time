@@ -290,7 +290,7 @@ static void prv_draw_battery_icon(GContext *ctx, GRect bounds) {
   graphics_fill_rect(ctx, body, 0, GCornerNone);
   graphics_fill_rect(ctx, terminal, 0, GCornerNone);
 
-  graphics_context_set_fill_color(ctx, GColorYellow);
+  graphics_context_set_fill_color(ctx, GColorWhite);
   graphics_fill_rect(ctx, interior, 0, GCornerNone);
 
   int fill_height = (interior.size.h * s_battery_percent + 99) / 100;

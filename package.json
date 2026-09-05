@@ -2,7 +2,7 @@
   "name": "pebble-like-time",
   "author": "MrReSc",
   "description": "A high-contrast, battery-friendly Pebble Time 2 watchface with health and sun times.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "Apache-2.0",
   "keywords": [
     "pebble-app",

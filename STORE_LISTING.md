@@ -28,6 +28,11 @@ sun times. The clock works without location access.
 Independent watchface; not an official Pebble or Core Devices app.
 Developed with the assistance of coding AI.
 
+## Release notes — 1.0.1
+
+Changed the battery icon's unfilled interior from yellow to white for a cleaner,
+more neutral appearance.
+
 ## Release notes — 1.0.0
 
 Initial release for Pebble Time 2 with a bold clock, charge-level battery,
